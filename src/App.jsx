@@ -7,8 +7,8 @@ import {
   SignedOut,
 } from "@clerk/clerk-react";
 import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
-import Welcome from "./components/Welcome";
-import Cozy from "./components/Cozy";
+import Welcome from "./components/welcome";
+import Cozy from "./components/cozy";
 import { FaCircleArrowRight } from "react-icons/fa6";
 
 if (!import.meta.env.VITE_CLERK_PUBLISHABLE_KEY) {
