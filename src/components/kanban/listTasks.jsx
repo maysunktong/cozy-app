@@ -79,8 +79,8 @@ const Section = ({ status, tasks, setTasks, todos, inProgress, review, done }) =
 
 
   return (
-    <div ref={drop} className='w-full flex flex-col justify-center items-start'>
-      <div className='flex justify-start items-center'>
+    <div ref={drop} className='w-full flex flex-col'>
+      <div className='flex'>
         <h2 className={`w-[16rem] px-2 py-1 text-lg font-semibold ${statusColor[status]} text-white`}>
           {status}
         
