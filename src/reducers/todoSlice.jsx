@@ -8,7 +8,12 @@ const todoSlice = createSlice({
   },
   reducers: {
     addTask: (state, action) => {
-      state.tasks.push(action.payload);
+      const { id, text, createDate } = action.payload;
+      state.tasks.push({
+        id,
+        text,
+        createDate: createDate || new Date().toLocaleString(),
+      });
     },
     markAsDone: (state, action) => {
       const { taskId } = action.payload;

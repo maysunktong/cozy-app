@@ -11,22 +11,26 @@ export const CreateTask = ({tasks, setTasks}) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!task.title) {
-      
       return toast.error('Task name is required');
     }
-
+  
     if (!task.description) {
       return toast.error('Task description is required');
     }
-    
+  
     setTasks((prev) => {
-      const taskWithId = { ...task, id: Date.now() }
-      const list = [...prev, taskWithId];
+      const taskWithIdAndDate = {
+        ...task,
+        id: Date.now(),
+        createDate: new Date().toLocaleString(),
+      };
+      const list = [...prev, taskWithIdAndDate];
       localStorage.setItem('tasks', JSON.stringify(list));
-      setTask({ title: '', description: '', status: 'todo' });  // Clear the task field
+      setTask({ title: '', description: '', status: 'todo' }); // Clear the task field
       return list;
     });
-  }
+  };
+  
 
 
   return (
