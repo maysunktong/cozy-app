@@ -71,44 +71,72 @@ const Section = ({ status, tasks, setTasks, todos, inProgress, review, done }) =
 
 // component Task for each single task
 const Task = ({ task, tasks, setTasks }) => {
-  const [isEditing, setIsEditing] = useState(false);
-  const [editedTask, setEditedTask] = useState(task);
+  const [isEditingTitle, setIsEditingTitle] = useState(false);
+  const [isEditingDescription, setIsEditingDescription] = useState(false);
+  const [editedTitle, setEditedTitle] = useState(task);
+  const [editedDescription, setEditedDescription] = useState(task);
+  const [removed, setRemoved] = useState(false);
 
-  const handleEdit = () => {
-    setIsEditing(true);
+  const handleEditTitle = () => {
+    setIsEditingTitle(true);
   };
 
-  const handleSave = () => {
-    const newTasks = tasks.map(t => t.id === task.id ? editedTask : t);
+  const handleEditDescription = () => {
+    setIsEditingDescription(true);
+  }
+
+  const handleSaveTitle = () => {
+    const newTasks = tasks.map(t => t.id === task.id ? editedTitle : t);
     setTasks(newTasks);
-    setIsEditing(false);
+    setIsEditingTitle(false);
   };
 
-  const handleRemove = (taskId) => {
-    const filteredTasks = tasks.filter((task) => task.id !== taskId);
-    localStorage.setItem('tasks', JSON.stringify(filteredTasks));
-    setTasks(filteredTasks);
-    toast.success('Task deleted');
-  };
+  const handleSaveDescription = () => {
+    const newTasks = tasks.map(t => t.id === task.id ? editedDescription : t);
+    setTasks(newTasks);
+    setIsEditingDescription(false);
+  }
+
+  const handleRemove = (id) => {
+    const newTasks = tasks.filter((task) => task.id !== id);
+    localStorage.setItem("tasks", JSON.stringify(newTasks));
+    setTasks(newTasks);
+    setRemoved(true);
+  }
 
   return (
     <div>
-      <button onClick={() => handleRemove(task.id)}>Delete</button>
-      {isEditing ? (
+      {isEditingTitle ? (
         <input
           type="text"
-          value={editedTask.description}
-          onChange={(e) => setEditedTask({ ...editedTask, description: e.target.value })}
+          value={editedTitle.title}
+          onChange={(e) => setEditedTitle({ ...editedTitle, title: e.target.value })}
+        />
+      ) : (
+        <p>{task.title}</p>
+      )}
+      {isEditingTitle ? (
+        <button onClick={handleSaveTitle}>Save</button>
+      ) : (
+        <button onClick={handleEditTitle}>Edit</button>
+      )}
+      
+      {isEditingDescription ? (
+        <input
+          type="text"
+          value={editedDescription.description}
+          onChange={(e) => setEditedDescription({ ...editedDescription, description: e.target.value })}
         />
       ) : (
         <p>{task.description}</p>
       )}
-      {isEditing ? (
-        <button onClick={handleSave}>Save</button>
+      {isEditingDescription ? (
+        <button onClick={handleSaveDescription}>Save</button>
       ) : (
-        <button onClick={handleEdit}>Edit</button>
+        <button onClick={handleEditDescription}>Edit</button>
       )}
       
+      <button onClick={() => handleRemove(task.id)}>Remove</button>
     </div>
   );
 };
