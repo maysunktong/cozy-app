@@ -1,5 +1,3 @@
-import ReactMarkdown from 'react-markdown';
-
 export const NoteList = ({ notes, deleteNote}) => {
   return (
     <div className="flex flex-wrap">
@@ -15,7 +13,7 @@ export const NoteList = ({ notes, deleteNote}) => {
                 Delete
               </button>
             </div>
-            <ReactMarkdown>{note.content}</ReactMarkdown>
+            <div>{note.content}</div>
           </div>
         </div>
       ))}

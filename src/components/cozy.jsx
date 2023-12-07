@@ -33,9 +33,11 @@ const Cozy = () => {
               Cozy
             </p>
           </div>
-          <div className='flex flex-col justify-between items-center gap-6 h-[36rem]'>
-            <MotivationalQuote />
-            <div>
+          <div className='flex flex-col justify-end items-center gap-6 h-auto'>
+            <div className='min-h-[15rem]'>
+              <MotivationalQuote />
+            </div>
+            <div className='h-[40rem]'>
               <ul className="p-6">
                 {Object.keys(boards).map((boardName, index) => (
                   <li key={index} onClick={() => handleBoardSelect(boardName)}>

@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import ReactMarkdown from 'react-markdown';
 
 export const NoteEditor = ({ addNote }) => {
   const [noteContent, setNoteContent] = useState('');
@@ -40,9 +39,8 @@ export const NoteEditor = ({ addNote }) => {
       <button onClick={handleAddNote}>Add Note</button>
       <div>
         <h3>Preview</h3>
-        <ReactMarkdown>{noteContent}</ReactMarkdown>
+        <div>{noteContent}</div>
       </div>
     </div>
   );
 };
-
