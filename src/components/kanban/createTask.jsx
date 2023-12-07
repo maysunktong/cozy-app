@@ -20,10 +20,10 @@ export const CreateTask = ({tasks, setTasks}) => {
     }
     
     setTasks((prev) => {
-      const list = [...prev, task];
+      const taskWithId = { ...task, id: Date.now() }
+      const list = [...prev, taskWithId];
       localStorage.setItem('tasks', JSON.stringify(list));
       return list;
-
     });
   }
 

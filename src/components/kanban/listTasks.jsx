@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import  toast  from "react-hot-toast";
-import {useDrag, useDrop} from 'react-dnd';
+import { useDrag, useDrop } from 'react-dnd';
+import toast from "react-hot-toast";
 
 export const ListTasks = ({ tasks, setTasks }) => {
   const [todos, setTodos] = useState([]);
@@ -85,10 +85,10 @@ const Section = ({ status, tasks, setTasks, todos, inProgress, review, done }) =
           {status}
         
         </h2>
-        <span className="text-sm">{tasks.length}</span>
+        <span className="text-sm">{tasksByStatus.length}</span>
       </div>
       <div className='flex flex-col gap-4 mt-4'>
-        {tasks.map((task) => (
+      {tasksByStatus.map((task) => ( 
           <Task key={task.id} task={task} tasks={tasks} setTasks={setTasks} />
         ))}
       </div>
@@ -101,8 +101,8 @@ const Section = ({ status, tasks, setTasks, todos, inProgress, review, done }) =
 const Task = ({ task, tasks, setTasks }) => {
   const [isEditingTitle, setIsEditingTitle] = useState(false);
   const [isEditingDescription, setIsEditingDescription] = useState(false);
-  const [editedTitle, setEditedTitle] = useState(task);
-  const [editedDescription, setEditedDescription] = useState(task);
+  const [editedTitle, setEditedTitle] = useState(task.title);
+  const [editedDescription, setEditedDescription] = useState(task.description);
   const [removed, setRemoved] = useState(false);
 
   // drag and drop
@@ -125,13 +125,13 @@ const Task = ({ task, tasks, setTasks }) => {
   }
 
   const handleSaveTitle = () => {
-    const newTasks = tasks.map(t => t.id === task.id ? editedTitle : t);
+    const newTasks = tasks.map(t => t.id === task.id ? {...t, title: editedTitle} : t);
     setTasks(newTasks);
     setIsEditingTitle(false);
   };
 
   const handleSaveDescription = () => {
-    const newTasks = tasks.map(t => t.id === task.id ? editedDescription : t);
+    const newTasks = tasks.map(t => t.id === task.id ? {...t, description: editedDescription} : t);
     setTasks(newTasks);
     setIsEditingDescription(false);
   }
