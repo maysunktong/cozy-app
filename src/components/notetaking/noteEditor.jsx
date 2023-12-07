@@ -19,14 +19,14 @@ export const NoteEditor = ({ addNote }) => {
       };
       addNote(newNote);
       setNoteContent('');
-      localStorage.removeItem('noteContent');
+      localStorage.setItem('noteContent', noteContent);  // Save note content in local storage
     }
   };
 
   const handleNoteChange = (e) => {
     const content = e.target.value;
     setNoteContent(content);
-    localStorage.setItem('noteContent', content);
+    localStorage.setItem('noteContent', content);  // Save note content in local storage
   };
 
   return (
