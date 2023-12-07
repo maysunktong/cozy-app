@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import  toast  from "react-hot-toast";
+import {useDrag, useDrop} from 'react-dnd';
 
 export const ListTasks = ({ tasks, setTasks }) => {
   const [todos, setTodos] = useState([]);
@@ -35,6 +36,7 @@ export const ListTasks = ({ tasks, setTasks }) => {
 
 // component Section for each single status
 const Section = ({ status, tasks, setTasks, todos, inProgress, review, done }) => {
+
   const statusColor = { todo: 'bg-blue-500', inprogress: 'bg-yellow-500', review: 'bg-orange-500', done: 'bg-green-500' };
   let tasksByStatus;
   switch (status) {
@@ -53,8 +55,31 @@ const Section = ({ status, tasks, setTasks, todos, inProgress, review, done }) =
     default:
       tasksByStatus = [];
   }
+
+  const [{isOver}, drop] = useDrop(() => ({
+    accept: 'task',
+    drop: (item) => addItemToSection(item.id),
+
+    collect: (monitor) => ({
+      isOver: !!monitor.isOver(),
+    }),
+  }));
+
+  const addItemToSection = (id) => {
+    setTasks((prev) => {
+      const modifiedTasks = prev.map((task) => {
+        if (task.id === id) {
+          return { ...task, status: status };
+        }
+        return task;
+      })
+      return modifiedTasks;
+  });
+  }
+
+
   return (
-    <div className='w-screen'>
+    <div ref={drop} className='w-screen'>
       <h2 className={`flex items-center w-full ${statusColor[status]}`}>{status}</h2>
       <div className='text-xl'>
         {tasksByStatus.length}
@@ -76,6 +101,17 @@ const Task = ({ task, tasks, setTasks }) => {
   const [editedTitle, setEditedTitle] = useState(task);
   const [editedDescription, setEditedDescription] = useState(task);
   const [removed, setRemoved] = useState(false);
+
+  // drag and drop
+  const [{isDragging}, drag] = useDrag(() => ({
+    type: 'task',
+    item: { id: task.id },
+    collect: (monitor) => ({
+      isDragging: !!monitor.isDragging(),
+    }),
+  }));
+
+  console.log("isDragging",isDragging);
 
   const handleEditTitle = () => {
     setIsEditingTitle(true);
@@ -102,10 +138,11 @@ const Task = ({ task, tasks, setTasks }) => {
     localStorage.setItem("tasks", JSON.stringify(newTasks));
     setTasks(newTasks);
     setRemoved(true);
+    toast.success("Task removed");
   }
 
   return (
-    <div>
+    <div className='cursor-grab' ref={drag}>
       {isEditingTitle ? (
         <input
           type="text"
@@ -139,4 +176,4 @@ const Task = ({ task, tasks, setTasks }) => {
       <button onClick={() => handleRemove(task.id)}>Remove</button>
     </div>
   );
-};
+}

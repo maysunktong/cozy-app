@@ -13,6 +13,8 @@
     "@clerk/clerk-react": "^4.28.2",
     "lottie-react": "^2.4.0",
     "react": "^18.2.0",
+    "react-dnd": "^16.0.1",
+    "react-dnd-html5-backend": "^16.0.1",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
     "react-router-dom": "^6.20.1"
