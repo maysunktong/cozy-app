@@ -23,6 +23,7 @@ export const CreateTask = ({tasks, setTasks}) => {
       const taskWithId = { ...task, id: Date.now() }
       const list = [...prev, taskWithId];
       localStorage.setItem('tasks', JSON.stringify(list));
+      setTask({ title: '', description: '', status: 'todo' });  // Clear the task field
       return list;
     });
   }
