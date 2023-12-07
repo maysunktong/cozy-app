@@ -31,7 +31,7 @@ export const Todolist = () => {
             value={taskInput}
             placeholder="Enter task name"
             onChange={(e) => setTaskInput(e.target.value)}
-            className="border border-gray-400 rounded-2xl p-2 w-80"
+            className="border border-gray-400 rounded-2xl p-2 w-80 dark:text-black"
           />
           <button
             onClick={handleAddTask}
@@ -45,7 +45,7 @@ export const Todolist = () => {
             <div className='border shadow-md bg-yellow-300 p-2 rounded-2xl font-bold'>Task tray</div>
             <ul className='flex flex-wrap flex-col py-4 gap-4'>
               {tasks.map((task) => (
-                <li key={task.id} className='border p-4 rounded-xl shadow-md bg-white flex justify-between items-center'>
+                <li key={task.id} className='border p-4 rounded-xl shadow-md bg-white flex justify-between items-center dark:text-slate-800'>
                   <div>{task.text}</div>
                   <button onClick={() => handleMarkAsDone(task.id)}>
                   <IconContext.Provider
