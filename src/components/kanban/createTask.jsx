@@ -45,7 +45,7 @@ export const CreateTask = ({tasks, setTasks}) => {
             value={task.title}
             onChange={(e) => setTask((prev) => ({ ...prev, title: e.target.value }))}
             placeholder='Task name'
-            className='border border-gray-400 rounded-2xl p-2'
+            className='border border-gray-400 rounded-2xl text-black p-2 dark:text-slate-800'
           />
         </div>
         <div className='flex gap-4 justify-start items-center'>
@@ -56,7 +56,7 @@ export const CreateTask = ({tasks, setTasks}) => {
             value={task.description}
             onChange={(e) => setTask((prev) => ({ ...prev, description: e.target.value }))}
             placeholder='Task description'
-            className='border border-gray-400 rounded-2xl p-2'
+            className='border border-gray-400 text-black rounded-2xl p-2'
           />
         </div>
         <button type="submit" className='border-gray-400 rounded-3xl py-2 px-4 bg-green-300 hover:bg-green-200 font-bold shadow-md'>Create</button>

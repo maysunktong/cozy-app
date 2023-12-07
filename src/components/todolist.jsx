@@ -35,14 +35,14 @@ export const Todolist = () => {
           />
           <button
             onClick={handleAddTask}
-            className="border-gray-400 rounded-3xl py-2 px-4 bg-yellow-200 hover:bg-red-200 font-bold shadow-md"
+            className="border-gray-400 rounded-3xl py-2 px-4 bg-yellow-500 hover:bg-yellow-600 font-bold shadow-md"
           >
             Add Task
           </button>
         </div>
         <div className='flex flex-row w-full py-8 gap-8'>
           <div className='w-96'>
-            <div className='border shadow-md bg-yellow-200 opacity-80 p-2 rounded-2xl font-bold'>Task tray</div>
+            <div className='border shadow-md bg-yellow-300 p-2 rounded-2xl font-bold'>Task tray</div>
             <ul className='flex flex-wrap flex-col py-4 gap-4'>
               {tasks.map((task) => (
                 <li key={task.id} className='border p-4 rounded-xl shadow-md bg-white flex justify-between items-center'>
@@ -59,7 +59,7 @@ export const Todolist = () => {
             </ul>
           </div>
           <div className='w-96'>
-            <div className='border shadow-md bg-green-400 opacity-50 p-2 rounded-2xl font-bold'>Done</div>
+            <div className='border shadow-md bg-green-400 p-2 rounded-2xl font-bold'>Done</div>
             <ul className='flex flex-wrap flex-col py-4 gap-4'>
               {done.map((doneTask) => (
                 <li key={doneTask.id} className='border p-4 rounded-xl shadow-md bg-green-200 line-through'>{doneTask.text}</li>

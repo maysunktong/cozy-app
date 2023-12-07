@@ -198,7 +198,7 @@ const Task = ({ task, tasks, setTasks }) => {
             onChange={(e) => setEditedTitle(e.target.value)}
           />
         ) : (
-          <p className="font-bold">{task.title}</p>
+          <p className="font-bold dark:text-slate-600">{task.title}</p>
         )}
         {isEditingTitle ? (
           <button onClick={handleSaveTitle}>Save</button>
@@ -235,7 +235,7 @@ const Task = ({ task, tasks, setTasks }) => {
           </button>
         )}
       </div>
-      <span>Created: {new Date(task.createDate).toLocaleString('en-US', { dateStyle: 'short', timeStyle: 'short' })}</span>
+      <span className='dark:text-gray-300 text-gray-300'>Created: {new Date(task.createDate).toLocaleString('en-US', { dateStyle: 'short', timeStyle: 'short' })}</span>
 
     </div>
   );

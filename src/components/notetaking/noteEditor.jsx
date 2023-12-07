@@ -36,12 +36,12 @@ export const NoteEditor = ({ addNote }) => {
         value={noteContent}
         onChange={handleNoteChange}
         placeholder="Start writing here..."
-        className="w-80 h-40 rounded-md resize-none focus:outline-none bg-white p-4"
+        className="w-80 h-40 rounded-md resize-none focus:outline-none bg-white p-4 dark:text-slate-400"
       />
       <div className="flex justify-end items-center">
         <button
           onClick={handleAddNote}
-          className="border py-2 px-4 rounded-2xl bg-slate-200 hover:bg-pink-500"
+          className="border py-2 px-4 rounded-2xl bg-slate-300 hover:bg-pink-500"
         >
           Add Note
         </button>
