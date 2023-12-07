@@ -5,10 +5,11 @@ import { Notetaking } from "./notetaking";
 import Lottie from "lottie-react";
 import Notebook from "../assets/notebook.json";
 import { MenuButton } from "./buttons/menuButton";
-import { UserButton } from "@clerk/clerk-react";
+import { UserButton, useUser } from "@clerk/clerk-react";
 
 const Cozy = () => {
   const [board, setBoard] = useState(null);
+  const { user } = useUser(); // Access user data from Clerk
 
   const boards = {
     Todolist: <Todolist />,
@@ -16,8 +17,8 @@ const Cozy = () => {
     Notetaking: <Notetaking />,
   };
 
-  const handleBoardSelect = (board) => {
-    setBoard(board);
+  const handleBoardSelect = (selectedBoard) => {
+    setBoard(selectedBoard);
   };
 
   return (
@@ -30,15 +31,23 @@ const Cozy = () => {
               Cozy
             </p>
           </div>
-          <div className='flex flex-col justify-center items-center gap-36'>
+          <div className='flex flex-col justify-center items-center gap-6 w-full h-full'>
+            
             <ul className="p-6">
-              {Object.keys(boards).map((board, index) => (
-                <li key={index} onClick={() => handleBoardSelect(board)}>
-                  <MenuButton>{board}</MenuButton>
+              {Object.keys(boards).map((boardName, index) => (
+                <li key={index} onClick={() => handleBoardSelect(boardName)}>
+                  <MenuButton>{boardName}</MenuButton>
                 </li>
               ))}
             </ul>
-            <UserButton />
+            <div className='flex flex-col justify-center items-center gap-4'>
+              <UserButton />
+              {user && (
+                <div className="text-center">
+                  <p className='text-gray-400'>Hi, {user.firstName} 🖐🏻</p>
+                </div>
+              )}
+            </div>
           </div>
         </div>
         <div className="p-6">

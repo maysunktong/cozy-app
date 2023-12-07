@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.cl-avatarBox {
+  min-width: 70px;
+  min-height: 70px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto;
+  position: relative;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 2px #fff;
+}

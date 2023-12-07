@@ -1,14 +1,22 @@
 import ReactMarkdown from 'react-markdown';
 
-export const NoteList = ({ notes, deleteNote, handleRemoveNote }) => {
+export const NoteList = ({ notes, deleteNote}) => {
   return (
-    <div>
-      <h2>Notes</h2>
+    <div className="flex flex-wrap">
+      <h2 className="w-full mb-4 text-2xl font-bold">Notes</h2>
       {notes.map((note) => (
-        <div key={note.id} className="note-item">
-          <button onClick={() => deleteNote(note.id)}>Delete</button>
-          <button onClick={() => handleRemoveNote(note.id)}>Remove</button>
-          <ReactMarkdown>{note.content}</ReactMarkdown>
+        <div key={note.id} className="p-4 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5">
+          <div className="bg-white rounded-md shadow-md p-4">
+            <div className="flex justify-end mb-2">
+              <button
+                className="text-red-500 hover:text-red-700 focus:outline-none"
+                onClick={() => deleteNote(note.id)}
+              >
+                Delete
+              </button>
+            </div>
+            <ReactMarkdown>{note.content}</ReactMarkdown>
+          </div>
         </div>
       ))}
     </div>
