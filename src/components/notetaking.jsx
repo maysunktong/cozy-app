@@ -23,7 +23,7 @@ export const Notetaking = () => {
   };
 
   return (
-    <div>
+    <div className='w-full'>
       {/* NoteList */}
       <NoteList notes={notes} deleteNote={deleteNote} />
       {/* NoteEditor */}
