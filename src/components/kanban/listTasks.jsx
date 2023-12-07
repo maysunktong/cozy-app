@@ -25,7 +25,7 @@ export const ListTasks = ({ tasks, setTasks }) => {
   const statuses = ["todo", "inprogress", "review", "done"];
 
   return (
-    <div className='flex gap-4 w-full'>
+    <div className='flex flex-row flex-wrap gap-6'>
       {statuses.map((status, index) => {
         return <Section key={index} status={status} tasks={tasks} setTasks={setTasks} 
         todos={todos} inProgress={inProgress} review={review} done={done} />;
@@ -79,15 +79,15 @@ const Section = ({ status, tasks, setTasks, todos, inProgress, review, done }) =
 
 
   return (
-    <div ref={drop} className='w-full flex flex-col'>
+    <div ref={drop} className='flex flex-col flex-wrap'>
       <div className='flex'>
-        <h2 className={`w-[16rem] px-2 py-1 text-lg font-semibold ${statusColor[status]} text-white`}>
+        <h2 className={`min-w-[20rem] px-2 py-1 text-lg font-semibold ${statusColor[status]} text-white flex gap-4 justify-start items-center rounded-xl`}>
           {status}
-        
+        <span className="text-sm text-white">{tasksByStatus.length}</span>
         </h2>
-        <span className="text-sm">{tasksByStatus.length}</span>
+        
       </div>
-      <div className='flex flex-col gap-4 mt-4'>
+      <div className='flex flex-col py-4 gap-2'>
       {tasksByStatus.map((task) => ( 
           <Task key={task.id} task={task} tasks={tasks} setTasks={setTasks} />
         ))}
@@ -145,38 +145,41 @@ const Task = ({ task, tasks, setTasks }) => {
   }
 
   return (
-    <div className='cursor-grab' ref={drag}>
-      {isEditingTitle ? (
-        <input
-          type="text"
-          value={editedTitle.title}
-          onChange={(e) => setEditedTitle({ ...editedTitle, title: e.target.value })}
-        />
-      ) : (
-        <p>{task.title}</p>
-      )}
-      {isEditingTitle ? (
-        <button onClick={handleSaveTitle}>Save</button>
-      ) : (
-        <button onClick={handleEditTitle}>Edit</button>
-      )}
+    <div className='cursor-grab border p-2 rounded-xl shadow-md bg-white' ref={drag}>
+      <div className='flex justify-end items-center'><button onClick={() => handleRemove(task.id)}>Remove</button></div>
+      <div className='flex justify-between items-center'>
+        {isEditingTitle ? (
+          <input
+            type="text"
+            value={editedTitle}
+            onChange={(e) => setEditedTitle(e.target.value)}
+          />
+        ) : (
+          <p>{task.title}</p>
+        )}
+        {isEditingTitle ? (
+          <button onClick={handleSaveTitle}>Save</button>
+        ) : (
+          <button onClick={handleEditTitle}>Edit</button>
+        )}
+      </div>
       
-      {isEditingDescription ? (
-        <input
-          type="text"
-          value={editedDescription.description}
-          onChange={(e) => setEditedDescription({ ...editedDescription, description: e.target.value })}
-        />
-      ) : (
-        <p>{task.description}</p>
-      )}
-      {isEditingDescription ? (
-        <button onClick={handleSaveDescription}>Save</button>
-      ) : (
-        <button onClick={handleEditDescription}>Edit</button>
-      )}
-      
-      <button onClick={() => handleRemove(task.id)}>Remove</button>
+      <div className='flex justify-between items-center'>
+        {isEditingDescription ? (
+          <input
+            type="text"
+            value={editedDescription}
+            onChange={(e) => setEditedDescription(e.target.value)}
+          />
+        ) : (
+          <p>{task.description}</p>
+        )}
+        {isEditingDescription ? (
+          <button onClick={handleSaveDescription}>Save</button>
+        ) : (
+          <button onClick={handleEditDescription}>Edit</button>
+        )}
+      </div>
     </div>
   );
 }
