@@ -30,7 +30,7 @@ export const NoteEditor = ({ addNote }) => {
 
   return (
     <div
-      className="flex flex-col gap-4 p-2 bg-white rounded-2xl shadow-md"
+      className="flex flex-col gap-4 p-2 bg-white rounded-2xl shadow-md border"
     >
       <textarea
         value={noteContent}
