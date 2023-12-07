@@ -26,6 +26,7 @@ export const CreateTask = ({tasks, setTasks}) => {
       };
       const list = [...prev, taskWithIdAndDate];
       localStorage.setItem('tasks', JSON.stringify(list));
+      toast.success('Task successfully created 🎉');
       setTask({ title: '', description: '', status: 'todo' }); // Clear the task field
       return list;
     });
@@ -34,9 +35,8 @@ export const CreateTask = ({tasks, setTasks}) => {
 
 
   return (
-    <div>
-      <h2>Create Task</h2>
-      <form onSubmit={handleSubmit}>
+    <div className='flex justify-center items-center gap-2 h-12 '>
+      <form onSubmit={handleSubmit} className='flex justify-start items-center'>
         <div>
           <label htmlFor="title">Title</label>
           <input

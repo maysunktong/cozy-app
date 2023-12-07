@@ -10,9 +10,8 @@ import { MotivationalQuote } from './quotes';
 
 const Cozy = () => {
   const [board, setBoard] = useState(null);
-  const [theme, setTheme] = useState("light"); // ["light", "dark"
+  const [theme, setTheme] = useState("light"); 
   const { user } = useUser(); 
-
   const boards = {
     Todolist: <Todolist />,
     Kanban: <Kanban />,
@@ -25,7 +24,7 @@ const Cozy = () => {
 
   return (
     <div className="flex flex-row justify-center items-center w-screen h-screen bg-gray-200">
-      <div className="w-[90%] h-[90%] flex rounded-2xl shadow-lg border bg-white">
+      <div className="w-full h-full flex rounded-2xl shadow-lg border bg-white">
         <div className="w-48 rounded-l-2xl p-6p border-r h-full">
           <div>
             <Lottie animationData={Notebook} loop={true} className="w-auto" />
