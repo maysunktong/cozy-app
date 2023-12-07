@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { toast } from 'react-hot-toast';
-import { MenuButton } from '../buttons/menuButton';
 
 export const CreateTask = ({tasks, setTasks}) => {
   const [task, setTask] = useState({
