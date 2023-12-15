@@ -28,7 +28,7 @@ export const ListTasks = ({ tasks, setTasks }) => {
   const Statuses = ["todo", "inprogress", "review", "done"];
 
   return (
-    <div className="flex flex-col md:flex-row flex-wrap gap-6">
+    <div className="grid grid-cols-1 lg:grid-cols-4 py-4">
       {Statuses.map((status, index) => {
         return (
           <Section
@@ -103,16 +103,15 @@ const Section = ({
   };
 
   return (
-    <div ref={drop} className="flex flex-col flex-wrap w-full md:w-1/4">
-      <div className="flex">
-        <h2
-          className={`min-w-[20rem] px-2 py-1 text-lg font-semibold ${StatusColor[status]} text-white flex gap-4 justify-start items-center rounded-xl`}
-        >
-          {status}
-          <span className="text-sm text-white">{tasksByStatus.length}</span>
-        </h2>
+    <div ref={drop} className="w-full px-2">
+      <div
+        className={`w-full flex justify-between items-center gap-2 px-2 py-1 text-lg font-semibold  ${StatusColor[status]} text-white rounded-xl`}
+      >
+        {status}
+        <span className="text-sm text-white border rounded-full px-4">{tasksByStatus.length}</span>
+      
       </div>
-      <div className="flex flex-col py-4 gap-2">
+      <div className="w-full flex flex-col py-4 gap-4">
         {tasksByStatus.map((task) => (
           <Task key={task.id} task={task} tasks={tasks} setTasks={setTasks} />
         ))}
@@ -196,7 +195,7 @@ const Task = ({ task, tasks, setTasks }) => {
             type="text"
             value={editedTitle}
             onChange={(e) => setEditedTitle(e.target.value)}
-            className='w-full outline-blue-300 text-blue-500'
+            className="w-full outline-blue-300 text-blue-500"
           />
         ) : (
           <p className="font-bold dark:text-slate-600">{task.title}</p>
@@ -220,7 +219,7 @@ const Task = ({ task, tasks, setTasks }) => {
             type="text"
             value={editedDescription}
             onChange={(e) => setEditedDescription(e.target.value)}
-            className='w-full outline-blue-300 text-blue-500'
+            className="w-full outline-blue-300 text-blue-500"
           />
         ) : (
           <p className="text-gray-500">{task.description}</p>
@@ -237,8 +236,13 @@ const Task = ({ task, tasks, setTasks }) => {
           </button>
         )}
       </div>
-      <span className='dark:text-gray-300 text-gray-300'>Created: {new Date(task.createDate).toLocaleString('en-US', { dateStyle: 'short', timeStyle: 'short' })}</span>
-
+      <span className="dark:text-gray-300 text-gray-300">
+        Created:{" "}
+        {new Date(task.createDate).toLocaleString("en-US", {
+          dateStyle: "short",
+          timeStyle: "short",
+        })}
+      </span>
     </div>
   );
 };

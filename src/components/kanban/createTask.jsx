@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 
-export const CreateTask = ({ tasks, setTasks }) => {
+export const CreateTask = ({ setTasks }) => {
   const [task, setTask] = useState({
     title: "",
     description: "",
@@ -33,13 +33,9 @@ export const CreateTask = ({ tasks, setTasks }) => {
   };
 
   return (
-    <div className="w-full lg:px-24  flex flex-col justify-center items-center gap-2  md:flex-col md:items-start dark:text-white">
-      <form
-        onSubmit={HandleSubmit}
-        className="w-full flex-col lg:flex-row flex justify-center items-center gap-4 "
-      >
+    <div className="w-full dark:text-white flex justify-center items-center">
+      <form onSubmit={HandleSubmit} className="w-full flex-wrap lg:w-[50%] flex gap-4">
         <div className="w-full flex justify-center items-start gap-4 flex-col">
-          <label htmlFor="title" className='text-md lg:text-lg text-gray-500'>Title</label>
           <input
             type="text"
             id="title"
@@ -52,7 +48,6 @@ export const CreateTask = ({ tasks, setTasks }) => {
           />
         </div>
         <div className="w-full flex gap-4 justify-center items-start flex-col">
-          <label htmlFor="description" className='text-md lg:text-lg text-gray-500'>Description</label>
           <input
             type="text"
             id="description"
@@ -64,16 +59,16 @@ export const CreateTask = ({ tasks, setTasks }) => {
             className="border border-gray-400 shadow-md text-black rounded-2xl p-2 w-full"
           />
         </div>
-          
+
+        <div className='w-full flex justify-end items-center'>
+          <button
+            type="submit"
+            className="border-gray-400 rounded-3xl py-2 px-4 bg-green-300 hover:bg-blue-400 font-bold shadow-md w-fit text-black"
+          >
+            Create
+          </button>
+        </div>
       </form>
-      <div className='w-full flex justify-end items-center'>
-        <button
-              type="submit"
-              className="border-gray-400 rounded-3xl py-2 px-4 bg-green-300 hover:bg-blue-400 font-bold shadow-md w-fit text-black"
-            >
-              Create
-            </button>
-      </div>
     </div>
   );
 };
