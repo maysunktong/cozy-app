@@ -12,24 +12,24 @@ export const ListTasks = ({ tasks, setTasks }) => {
   const [done, setDone] = useState([]);
 
   useEffect(() => {
-    const filterTodos = tasks.filter((task) => task.status === "todo");
-    const filterInProgress = tasks.filter(
+    const FilterTodos = tasks.filter((task) => task.status === "todo");
+    const FilterInProgress = tasks.filter(
       (task) => task.status === "inprogress"
     );
-    const filterReview = tasks.filter((task) => task.status === "review");
-    const filterDone = tasks.filter((task) => task.status === "done");
+    const FilterReview = tasks.filter((task) => task.status === "review");
+    const FilterDone = tasks.filter((task) => task.status === "done");
 
-    setTodos(filterTodos);
-    setInProgress(filterInProgress);
-    setReview(filterReview);
-    setDone(filterDone);
+    setTodos(FilterTodos);
+    setInProgress(FilterInProgress);
+    setReview(FilterReview);
+    setDone(FilterDone);
   }, [tasks]);
 
-  const statuses = ["todo", "inprogress", "review", "done"];
+  const Statuses = ["todo", "inprogress", "review", "done"];
 
   return (
     <div className="flex flex-col md:flex-row flex-wrap gap-6">
-      {statuses.map((status, index) => {
+      {Statuses.map((status, index) => {
         return (
           <Section
             key={index}
@@ -57,7 +57,7 @@ const Section = ({
   review,
   done,
 }) => {
-  const statusColor = {
+  const StatusColor = {
     todo: "bg-blue-500",
     inprogress: "bg-yellow-500",
     review: "bg-orange-500",
@@ -83,22 +83,22 @@ const Section = ({
 
   const [{ isOver }, drop] = useDrop(() => ({
     accept: "task",
-    drop: (item) => addItemToSection(item.id),
+    drop: (item) => AddItemToSection(item.id),
 
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
     }),
   }));
 
-  const addItemToSection = (id) => {
+  const AddItemToSection = (id) => {
     setTasks((prev) => {
-      const modifiedTasks = prev.map((task) => {
+      const ModifiedTasks = prev.map((task) => {
         if (task.id === id) {
           return { ...task, status: status };
         }
         return task;
       });
-      return modifiedTasks;
+      return ModifiedTasks;
     });
   };
 
@@ -106,7 +106,7 @@ const Section = ({
     <div ref={drop} className="flex flex-col flex-wrap w-full md:w-1/4">
       <div className="flex">
         <h2
-          className={`min-w-[20rem] px-2 py-1 text-lg font-semibold ${statusColor[status]} text-white flex gap-4 justify-start items-center rounded-xl`}
+          className={`min-w-[20rem] px-2 py-1 text-lg font-semibold ${StatusColor[status]} text-white flex gap-4 justify-start items-center rounded-xl`}
         >
           {status}
           <span className="text-sm text-white">{tasksByStatus.length}</span>
@@ -140,34 +140,34 @@ const Task = ({ task, tasks, setTasks }) => {
 
   console.log("isDragging", isDragging);
 
-  const handleEditTitle = () => {
+  const HandleEditTitle = () => {
     setIsEditingTitle(true);
   };
 
-  const handleEditDescription = () => {
+  const HandleEditDescription = () => {
     setIsEditingDescription(true);
   };
 
-  const handleSaveTitle = () => {
-    const newTasks = tasks.map((t) =>
+  const HandleSaveTitle = () => {
+    const NewTasks = tasks.map((t) =>
       t.id === task.id ? { ...t, title: editedTitle } : t
     );
-    setTasks(newTasks);
+    setTasks(NewTasks);
     setIsEditingTitle(false);
   };
 
-  const handleSaveDescription = () => {
-    const newTasks = tasks.map((t) =>
+  const HandleSaveDescription = () => {
+    const NewTasks = tasks.map((t) =>
       t.id === task.id ? { ...t, description: editedDescription } : t
     );
-    setTasks(newTasks);
+    setTasks(NewTasks);
     setIsEditingDescription(false);
   };
 
-  const handleRemove = (id) => {
-    const newTasks = tasks.filter((task) => task.id !== id);
-    localStorage.setItem("tasks", JSON.stringify(newTasks));
-    setTasks(newTasks);
+  const HandleRemove = (id) => {
+    const NewTasks = tasks.filter((task) => task.id !== id);
+    localStorage.setItem("tasks", JSON.stringify(NewTasks));
+    setTasks(NewTasks);
     setRemoved(true);
     toast.success("Task removed");
   };
@@ -178,7 +178,7 @@ const Task = ({ task, tasks, setTasks }) => {
       ref={drag}
     >
       <div className="flex justify-end items-center">
-        <button onClick={() => handleRemove(task.id)}>
+        <button onClick={() => HandleRemove(task.id)}>
           <IconContext.Provider
             value={{
               color: "gray",
@@ -201,9 +201,9 @@ const Task = ({ task, tasks, setTasks }) => {
           <p className="font-bold dark:text-slate-600">{task.title}</p>
         )}
         {isEditingTitle ? (
-          <button onClick={handleSaveTitle}>Save</button>
+          <button onClick={HandleSaveTitle}>Save</button>
         ) : (
-          <button onClick={handleEditTitle}>
+          <button onClick={HandleEditTitle}>
             <IconContext.Provider
               value={{ color: "lightgray", className: "global-class-name" }}
             >
@@ -224,9 +224,9 @@ const Task = ({ task, tasks, setTasks }) => {
           <p className="text-gray-500">{task.description}</p>
         )}
         {isEditingDescription ? (
-          <button onClick={handleSaveDescription}>Save</button>
+          <button onClick={HandleSaveDescription}>Save</button>
         ) : (
-          <button onClick={handleEditDescription}>
+          <button onClick={HandleEditDescription}>
             <IconContext.Provider
               value={{ color: "lightgray", className: "global-class-name" }}
             >

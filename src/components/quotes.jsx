@@ -4,24 +4,24 @@ export const MotivationalQuote = () => {
   const [quote, setQuote] = useState('');
 
   useEffect(() => {
-    const fetchQuote = async () => {
+    const FetchQuote = async () => {
       try {
-        const response = await fetch('https://api.quotable.io/random');
-        const data = await response.json();
-        setQuote(data.content);
+        const Response = await fetch('https://api.quotable.io/random');
+        const Data = await Response.json();
+        setQuote(Data.content);
       } catch (error) {
         console.error('Error fetching quote:', error);
       }
     };
 
     // Fetch a new quote when the component mounts
-    fetchQuote();
+    FetchQuote();
 
     // Fetch a new quote every 10 seconds (adjust the interval as needed)
-    const intervalId = setInterval(fetchQuote, 4000);
+    const IntervalId = setInterval(FetchQuote, 4000);
 
     // Clear the interval when the component unmounts
-    return () => clearInterval(intervalId);
+    return () => clearInterval(IntervalId);
   }, []);
 
   return (

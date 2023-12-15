@@ -7,24 +7,24 @@ import { MdOutlineDone } from "react-icons/md";
 
 export const Todolist = () => {
   const [taskInput, setTaskInput] = useState("");
-  const dispatch = useDispatch();
+  const Dispatch = useDispatch();
   const { tasks, done } = useSelector((state) => state.todo);
 
-  const handleAddTask = () => {
+  const HandleAddTask = () => {
     if (taskInput.trim() !== "") {
-      dispatch(addTask({ id: Date.now(), text: taskInput }));
+      Dispatch(addTask({ id: Date.now(), text: taskInput }));
       setTaskInput("");
     }
   };
 
-  const handleMarkAsDone = (taskId) => {
-    dispatch(markAsDone({ taskId }));
+  const HandleMarkAsDone = (taskId) => {
+    Dispatch(markAsDone({ taskId }));
   };
 
   return (
     <div className='w-full'>
       <div className='w-full'>
-        <p className="w-full text-2xl font-bold py-8">Todo App</p>{" "}
+        <p className="w-full text-2xl font-bold py-8">Todo App</p>
         <div className="w-full flex gap-4 justify-start items-center">
           <input
             type="text"
@@ -34,7 +34,7 @@ export const Todolist = () => {
             className="border border-gray-400 rounded-2xl p-2 w-80 dark:text-black"
           />
           <button
-            onClick={handleAddTask}
+            onClick={HandleAddTask}
             className="border-gray-400 rounded-3xl py-2 px-4 bg-yellow-500 hover:bg-yellow-600 font-bold shadow-md"
           >
             Add Task
@@ -47,7 +47,7 @@ export const Todolist = () => {
               {tasks.map((task) => (
                 <li key={task.id} className='border p-4 rounded-xl shadow-md bg-white flex justify-between items-center dark:text-slate-800'>
                   <div>{task.text}</div>
-                  <button onClick={() => handleMarkAsDone(task.id)}>
+                  <button onClick={() => HandleMarkAsDone(task.id)}>
                   <IconContext.Provider
                     value={{ color: "green", className: "global-class-name" }}
                   >

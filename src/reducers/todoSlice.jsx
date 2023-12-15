@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const todoSlice = createSlice({
+const TodoSlice = createSlice({
   name: 'todo',
   initialState: {
     tasks: [],
@@ -17,15 +17,15 @@ const todoSlice = createSlice({
     },
     markAsDone: (state, action) => {
       const { taskId } = action.payload;
-      const taskIndex = state.tasks.findIndex((task) => task.id === taskId);
+      const TaskIndex = state.tasks.findIndex((task) => task.id === taskId);
 
-      if (taskIndex !== -1) {
-        const doneTask = state.tasks.splice(taskIndex, 1)[0];
-        state.done.push(doneTask);
+      if (TaskIndex !== -1) {
+        const DoneTask = state.tasks.splice(TaskIndex, 1)[0];
+        state.done.push(DoneTask);
       }
     },
   },
 });
 
-export const { addTask, markAsDone } = todoSlice.actions;
-export default todoSlice.reducer;
+export const { addTask, markAsDone } = TodoSlice.actions;
+export default TodoSlice.reducer;

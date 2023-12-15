@@ -15,7 +15,7 @@ if (!import.meta.env.VITE_CLERK_PUBLISHABLE_KEY) {
   throw new Error("Missing Publishable Key");
 }
 
-const clerkPubKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
+const ClerkPubKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
 function PublicPage() {
   return (
@@ -47,10 +47,10 @@ function ProtectedPage() {
 }
 
 function ClerkProviderWithRoutes() {
-  const navigate = useNavigate();
+  const Navigate = useNavigate();
 
   return (
-    <ClerkProvider publishableKey={clerkPubKey} navigate={(to) => navigate(to)}>
+    <ClerkProvider publishableKey={ClerkPubKey} Navigate={(to) => Navigate(to)}>
       <Routes>
         <Route path="/" element={<PublicPage />} />
         <Route

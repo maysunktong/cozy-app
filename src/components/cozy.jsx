@@ -15,13 +15,13 @@ const Cozy = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const { user } = useUser();
 
-  const boards = {
+  const Boards = {
     Todolist: <Todolist />,
     Kanban: <Kanban />,
     Notetaking: <Notetaking />,
   };
 
-  const handleBoardSelect = (selectedBoard) => {
+  const HandleBoardSelect = (selectedBoard) => {
     setBoard(selectedBoard);
   };
 
@@ -34,7 +34,7 @@ const Cozy = () => {
     }
   }, [theme]);
 
-  const handleThemeSwitch = () => {
+  const HandleThemeSwitch = () => {
     setTheme(theme === "dark" ? "light" : "dark");
     setIsDarkMode((prevMode) => !prevMode);
   };
@@ -52,8 +52,8 @@ const Cozy = () => {
 
           <div className="flex justify-center items-center w-full h-full">
             <ul className="flex justify-between items-center">
-              {Object.keys(boards).map((boardName, index) => (
-                <li key={index} onClick={() => handleBoardSelect(boardName)}>
+              {Object.keys(Boards).map((boardName, index) => (
+                <li key={index} onClick={() => HandleBoardSelect(boardName)}>
                   <MenuButton>{boardName}</MenuButton>
                 </li>
               ))}
@@ -69,12 +69,12 @@ const Cozy = () => {
                 </div>
               )}
             </div>
-            <button onClick={handleThemeSwitch}>
+            <button onClick={HandleThemeSwitch}>
               {isDarkMode ? <LightButton /> : <DarkButton />}
             </button>
           </div>
         </nav>
-        <div className="p-6">{board ? boards[board] : <EmptyState />}</div>
+        <div className="p-6">{board ? Boards[board] : <EmptyState />}</div>
       </div>
     </div>
   );

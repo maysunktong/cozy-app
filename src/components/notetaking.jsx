@@ -6,29 +6,29 @@ export const Notetaking = () => {
   const [notes, setNotes] = useState([]);
 
   useEffect(() => {
-    const savedNotes = JSON.parse(localStorage.getItem("notes")) || [];
-    setNotes(savedNotes);
+    const SavedNotes = JSON.parse(localStorage.getItem("notes")) || [];
+    setNotes(SavedNotes);
   }, []);
 
-  const addNote = (newNote) => {
-    const updatedNotes = [...notes, newNote];
-    setNotes(updatedNotes);
-    localStorage.setItem("notes", JSON.stringify(updatedNotes));
+  const AddNote = (newNote) => {
+    const UpdatedNotes = [...notes, newNote];
+    setNotes(UpdatedNotes);
+    localStorage.setItem("notes", JSON.stringify(UpdatedNotes));
   };
 
-  const deleteNote = (id) => {
-    const updatedNotes = notes.filter((note) => note.id !== id);
-    setNotes(updatedNotes);
-    localStorage.setItem("notes", JSON.stringify(updatedNotes));
+  const DeleteNote = (id) => {
+    const UpdatedNotes = notes.filter((note) => note.id !== id);
+    setNotes(UpdatedNotes);
+    localStorage.setItem("notes", JSON.stringify(UpdatedNotes));
   };
 
   return (
     <div className='w-full'>
       {/* NoteList */}
-      <NoteList notes={notes} deleteNote={deleteNote} />
+      <NoteList notes={notes} DeleteNote={DeleteNote} />
       {/* NoteEditor */}
       <div className="fixed bottom-40 right-40">
-        <NoteEditor addNote={addNote} />
+        <NoteEditor AddNote={AddNote} />
       </div>
     </div>
   );
