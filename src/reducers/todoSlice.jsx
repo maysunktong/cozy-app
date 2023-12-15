@@ -24,8 +24,16 @@ const TodoSlice = createSlice({
         state.done.push(DoneTask);
       }
     },
+    deleteDoneTask: (state, action) => {
+      const { taskId } = action.payload;
+      const DoneTaskIndex = state.done.findIndex((task) => task.id === taskId);
+
+      if (DoneTaskIndex !== -1) {
+        state.done.splice(DoneTaskIndex, 1);
+      }
+    },
   },
 });
 
-export const { addTask, markAsDone } = TodoSlice.actions;
+export const { addTask, markAsDone, deleteDoneTask } = TodoSlice.actions;
 export default TodoSlice.reducer;
