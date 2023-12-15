@@ -25,5 +25,7 @@ React-hot-toast
 Deployment link on Netlify
 https://finalproject-cozy-may.netlify.app
 
+Figma final project: https://www.figma.com/file/4cta9SksmLrsNgYiiPaPKJ/Final-Project-Template---May?type=design&node-id=1%3A4&mode=design&t=ozNNb9Ra2BtOqBXM-1
+
 ❤️ Thank you Technigo Team for great mentoring and support during the whole programme ✨
 🐻🦥  I kicked started this project alongside my very busy schedule with master degree, Swedish lessons, and job. I did it! Yeah 🎉🎉🎉
