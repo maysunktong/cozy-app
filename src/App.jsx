@@ -25,7 +25,7 @@ function PublicPage() {
           <Welcome />
         </div>
         <div className="text-center flex flex-col justify-center items-center gap-2">
-          <p className="font-extrabold text-transparent lg:text-9xl md:text-5xl text-4xl bg-clip-text bg-gradient-to-r from-purple-400 to-orange-600">
+          <p className="font-extrabold text-transparent lg:text-5xl md:text-3xl text-2xl bg-clip-text bg-gradient-to-r from-purple-400 to-orange-600">
             Cozy
           </p>
           <i className='text-slate-400'>Your productive buddy</i>
