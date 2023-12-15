@@ -35,9 +35,9 @@ export const CreateTask = ({tasks, setTasks}) => {
 
 
   return (
-    <div className='flex justify-center items-center gap-2 h-12 py-12'>
-      <form onSubmit={handleSubmit} className='flex justify-start items-center gap-4'>
-        <div className='flex justify-start items-center gap-4'>
+    <div className='flex justify-center items-center gap-2 h-12 py-12 md:flex-col md:items-start'>
+      <form onSubmit={handleSubmit} className='flex justify-start items-center gap-4 md:flex-col md:items-start'>
+        <div className='flex justify-start items-center gap-4 md:flex-col md:items-start'>
           <label htmlFor="title">Title</label>
           <input
             type="text"
@@ -45,10 +45,10 @@ export const CreateTask = ({tasks, setTasks}) => {
             value={task.title}
             onChange={(e) => setTask((prev) => ({ ...prev, title: e.target.value }))}
             placeholder='Task name'
-            className='border border-gray-400 rounded-2xl text-black p-2 dark:text-slate-800'
+            className='border border-gray-400 rounded-2xl text-black p-2 dark:text-slate-800 w-full'
           />
         </div>
-        <div className='flex gap-4 justify-start items-center'>
+        <div className='flex gap-4 justify-start items-center md:flex-col md:items-start'>
           <label htmlFor="description">Description</label>
           <input
             type="text"
@@ -56,10 +56,10 @@ export const CreateTask = ({tasks, setTasks}) => {
             value={task.description}
             onChange={(e) => setTask((prev) => ({ ...prev, description: e.target.value }))}
             placeholder='Task description'
-            className='border border-gray-400 text-black rounded-2xl p-2'
+            className='border border-gray-400 text-black rounded-2xl p-2 w-full'
           />
         </div>
-        <button type="submit" className='border-gray-400 rounded-3xl py-2 px-4 bg-green-300 hover:bg-green-200 font-bold shadow-md'>Create</button>
+        <button type="submit" className='border-gray-400 rounded-3xl py-2 px-4 bg-green-300 hover:bg-green-200 font-bold shadow-md w-full md:mt-4'>Create</button>
       </form>
     </div>
   )

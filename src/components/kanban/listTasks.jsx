@@ -28,7 +28,7 @@ export const ListTasks = ({ tasks, setTasks }) => {
   const statuses = ["todo", "inprogress", "review", "done"];
 
   return (
-    <div className="flex flex-row flex-wrap gap-6">
+    <div className="flex flex-col md:flex-row flex-wrap gap-6">
       {statuses.map((status, index) => {
         return (
           <Section
@@ -103,7 +103,7 @@ const Section = ({
   };
 
   return (
-    <div ref={drop} className="flex flex-col flex-wrap">
+    <div ref={drop} className="flex flex-col flex-wrap w-full md:w-1/4">
       <div className="flex">
         <h2
           className={`min-w-[20rem] px-2 py-1 text-lg font-semibold ${statusColor[status]} text-white flex gap-4 justify-start items-center rounded-xl`}
