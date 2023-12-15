@@ -33,13 +33,13 @@ export const CreateTask = ({ tasks, setTasks }) => {
   };
 
   return (
-    <div className="flex justify-center items-center gap-2 h-12 py-12 md:flex-col md:items-start">
+    <div className="w-full lg:px-24  flex flex-col justify-center items-center gap-2  md:flex-col md:items-start dark:text-white">
       <form
         onSubmit={HandleSubmit}
-        className="flex justify-start items-center gap-4 md:flex-col md:items-start"
+        className="w-full flex-col lg:flex-row flex justify-center items-center gap-4 "
       >
-        <div className="flex justify-start items-center gap-4 md:flex-col md:items-start">
-          <label htmlFor="title">Title</label>
+        <div className="w-full flex justify-center items-start gap-4 flex-col">
+          <label htmlFor="title" className='text-md lg:text-lg text-gray-500'>Title</label>
           <input
             type="text"
             id="title"
@@ -48,11 +48,11 @@ export const CreateTask = ({ tasks, setTasks }) => {
               setTask((prev) => ({ ...prev, title: e.target.value }))
             }
             placeholder="Task name"
-            className="border border-gray-400 rounded-2xl text-black p-2 dark:text-slate-800 w-full"
+            className="border border-gray-400 shadow-md rounded-2xl text-black p-2 dark:text-slate-800 w-full"
           />
         </div>
-        <div className="flex gap-4 justify-start items-center md:flex-col md:items-start">
-          <label htmlFor="description">Description</label>
+        <div className="w-full flex gap-4 justify-center items-start flex-col">
+          <label htmlFor="description" className='text-md lg:text-lg text-gray-500'>Description</label>
           <input
             type="text"
             id="description"
@@ -61,16 +61,19 @@ export const CreateTask = ({ tasks, setTasks }) => {
               setTask((prev) => ({ ...prev, description: e.target.value }))
             }
             placeholder="Task description"
-            className="border border-gray-400 text-black rounded-2xl p-2 w-full"
+            className="border border-gray-400 shadow-md text-black rounded-2xl p-2 w-full"
           />
         </div>
-        <button
-          type="submit"
-          className="border-gray-400 rounded-3xl py-2 px-4 bg-green-300 hover:bg-green-200 font-bold shadow-md w-full md:mt-4"
-        >
-          Create
-        </button>
+          
       </form>
+      <div className='w-full flex justify-end items-center'>
+        <button
+              type="submit"
+              className="border-gray-400 rounded-3xl py-2 px-4 bg-green-300 hover:bg-blue-400 font-bold shadow-md w-fit text-black"
+            >
+              Create
+            </button>
+      </div>
     </div>
   );
 };

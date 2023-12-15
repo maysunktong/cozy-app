@@ -174,7 +174,7 @@ const Task = ({ task, tasks, setTasks }) => {
 
   return (
     <div
-      className="cursor-grab border p-2 rounded-xl shadow-md bg-white"
+      className="cursor-grab border p-4 rounded-xl shadow-md bg-white"
       ref={drag}
     >
       <div className="flex justify-end items-center">
@@ -196,6 +196,7 @@ const Task = ({ task, tasks, setTasks }) => {
             type="text"
             value={editedTitle}
             onChange={(e) => setEditedTitle(e.target.value)}
+            className='w-full outline-blue-300 text-blue-500'
           />
         ) : (
           <p className="font-bold dark:text-slate-600">{task.title}</p>
@@ -219,6 +220,7 @@ const Task = ({ task, tasks, setTasks }) => {
             type="text"
             value={editedDescription}
             onChange={(e) => setEditedDescription(e.target.value)}
+            className='w-full outline-blue-300 text-blue-500'
           />
         ) : (
           <p className="text-gray-500">{task.description}</p>
