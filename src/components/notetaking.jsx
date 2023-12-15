@@ -23,13 +23,10 @@ export const Notetaking = () => {
   };
 
   return (
-    <div className='w-full'>
-      {/* NoteList */}
+    <div className="w-full">
+      <p className="w-full text-2xl text-center font-bold pb-4">Note taking Board 📝</p>
+      <NoteEditor AddNote={AddNote} />
       <NoteList notes={notes} DeleteNote={DeleteNote} />
-      {/* NoteEditor */}
-      <div className="fixed bottom-40 right-40">
-        <NoteEditor AddNote={AddNote} />
-      </div>
     </div>
   );
 };

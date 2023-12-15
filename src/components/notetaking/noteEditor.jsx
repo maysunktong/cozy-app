@@ -30,13 +30,13 @@ export const NoteEditor = ({ AddNote }) => {
 
   return (
     <div
-      className="flex flex-col gap-4 p-2 bg-white rounded-2xl shadow-md border"
+      className="w-full lg:w-1/2 m-auto flex flex-col gap-4 p-4 rounded-2xl shadow-md border text-black"
     >
       <textarea
         value={noteContent}
         onChange={HandleNoteChange}
         placeholder="Start writing here..."
-        className="w-80 h-40 rounded-md resize-none focus:outline-none bg-white p-4 dark:text-slate-400"
+        className="w-full rounded-md resize-none focus:outline-none  p-4 text-md lg:text-2xl md:text-xl"
       />
       <div className="flex justify-end items-center">
         <button
