@@ -10,7 +10,6 @@ const DarkButton = () => {
       >
         <IoMoon />
       </IconContext.Provider>{" "}
-      Dark
     </button>
   );
 };
@@ -23,7 +22,6 @@ const LightButton = () => {
       >
         <IoSunny />
       </IconContext.Provider>
-      Light
     </button>
   );
 };
