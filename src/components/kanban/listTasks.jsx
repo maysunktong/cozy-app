@@ -111,10 +111,16 @@ const Section = ({
         <span className="text-sm text-white border rounded-full px-4">{tasksByStatus.length}</span>
       
       </div>
-      <div className="w-full flex flex-col py-4 gap-4">
-        {tasksByStatus.map((task) => (
-          <Task key={task.id} task={task} tasks={tasks} setTasks={setTasks} />
-        ))}
+      <div className="w-full flex  flex-col py-4 gap-4 min-h-[10rem] lg:h-auto">
+        {tasksByStatus.length > 0 ? (
+          tasksByStatus.map((task) => (
+            <Task key={task.id} task={task} tasks={tasks} setTasks={setTasks} />
+          ))
+        ) : (
+          <div className="flex justify-center items-center text-gray-500">
+            No tasks in this section.
+          </div>
+        )}
       </div>
     </div>
   );
