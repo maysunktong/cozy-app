@@ -24,7 +24,7 @@ export const Todolist = () => {
   return (
     <div className='w-full'>
       <div className='w-full'>
-        <p className="w-full text-2xl font-bold py-8">Todo App</p>
+      <p className="w-full text-2xl text-center font-bold pb-4 dark:text-gray-200">Todo Board ⛳️</p>
         <div className="w-full flex gap-4 justify-start items-center">
           <input
             type="text"

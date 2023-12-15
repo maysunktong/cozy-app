@@ -19,7 +19,7 @@ useEffect(() => {
   return (
     <DndProvider backend={HTML5Backend}>
       <Toaster />
-      <p className="w-full text-2xl text-center font-bold pb-4">Kanban Board 📚</p>
+      <p className="w-full text-2xl text-center font-bold pb-4 dark:text-gray-200">Kanban Board 📚</p>
       <CreateTask tasks={tasks} setTasks={setTasks} />
       <ListTasks tasks={tasks} setTasks={setTasks}  />
     </DndProvider>

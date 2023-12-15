@@ -3,7 +3,7 @@ import { IoMdCloseCircle } from "react-icons/io";
 
 export const NoteList = ({ notes, DeleteNote }) => {
   return (
-    <div className="w-full flex flex-wrap text-black">
+    <div className="w-full h-auto flex flex-wrap text-black">
       {notes.map((note) => (
         <div key={note.id} className="w-full lg:w-[18rem] h-auto border rounded-2xl shadow-lg bg-yellow-300 p-4 m-2">
           <div className='flex justify-end items-center whitespace-normal p-4'>

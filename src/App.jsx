@@ -19,7 +19,7 @@ const ClerkPubKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
 function PublicPage() {
   return (
-    <div className="flex justify-center items-center w-screen h-screen bg-slate-300">
+    <div className="flex justify-center items-center w-screen h-screen bg-slate-300 ">
       <div className='grid grid-cols-2 lg:w-[50%] md:w-[70%] w-[80%] lg:h-[50%] h-[40%] border border-slate-200 shadow-lg bg-white rounded-3xl'>
         <div className='bg-gradient-to-r from-purple-100 to-white flex justify-center items-center rounded-l-3xl'>
           <Welcome />

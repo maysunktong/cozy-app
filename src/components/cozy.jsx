@@ -40,9 +40,8 @@ const Cozy = () => {
   };
 
   return (
-    <div className="w-full h-full bg-gray-200 dark:text-white">
-      <div className=" bg-white dark:bg-slate-900">
-        <nav className="w-full h-full flex justify-center items-center">
+      <div className="w-full min-h-screen bg-white dark:bg-slate-900">
+        <nav className="flex justify-center items-center">
           <div className="text-center">
             <Lottie animationData={Notebook} loop={true} className="w-24 mx-auto" />
             <p className="font-extrabold text-transparent lg:text-4xl md:text-3xl text-2xl bg-clip-text bg-gradient-to-r from-purple-400 to-orange-600 text-center">
@@ -74,9 +73,8 @@ const Cozy = () => {
             </button>
           </div>
         </nav>
-        <div className="p-6">{board ? Boards[board] : <EmptyState />}</div>
+        <div className="p-6 min-h-screen" >{board ? Boards[board] : <EmptyState />}</div>
       </div>
-    </div>
   );
 };
 
